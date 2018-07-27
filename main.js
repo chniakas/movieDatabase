@@ -1,8 +1,16 @@
 $(document).ready(function () {
     let typedMovie = '';
     let typedmovie;
+
     //Preview most popular movies
-    bootStrap();
+    (function getPopular(){
+        getMovie().done(function (response) {
+
+            var movies = response.results;
+            popular(movies);
+        })
+    })();
+
     // Search input
     var searchMovie = document.getElementById('movie_title');
 
@@ -14,7 +22,9 @@ $(document).ready(function () {
         search(typedmovie);
         counter = 2;
     });
+
     var counter = 2;
+    //Infinity scroll
     $(window).scroll(function () {
 
         if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {

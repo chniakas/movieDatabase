@@ -12,7 +12,6 @@ function popular(movies) {
                     <p class='overview'>{{overview}}</p>`;
 
             var template = Handlebars.compile(context);
-
             var data = template({
                 title: movie.original_title,
                 path: movie.poster_path,
@@ -20,16 +19,12 @@ function popular(movies) {
             });
 
             listElement.innerHTML += data;
-
-
-                postersList.appendChild(listElement);
+            postersList.appendChild(listElement);
 
             listElement.addEventListener('click', (e) => {
                 if (e.target) {
                     sessionStorage.setItem('movie', JSON.stringify(movie));
                     window.location.href = "http://127.0.0.1:5500/moviePrev.html"
-
-
                 }
             });
         }
